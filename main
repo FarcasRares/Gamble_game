@@ -1,0 +1,10 @@
+package Gamble_Game;
+
+public class main {
+
+	public static void main(String[] args) {
+		Aplication app=new Aplication("Gamble game");
+
+	}
+
+}
