@@ -1,0 +1,89 @@
+package Gamble_Game;
+
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JTextArea;
+
+public class Aplication extends JFrame {
+	JFrame frame;
+	JPanel p1;
+	JButton Dice;
+	JButton Start;
+	JButton Quit;
+	JButton Quit2;
+	JButton close;
+	JTextArea chat;
+	Aplication(String text)
+	{
+		frame=new JFrame (text);
+		frame.setLayout(null);
+		
+		p1=new JPanel();
+		p1.setBounds(0,0,700,400);
+		p1.setVisible(false);
+		p1.setLayout(null);
+		p1.setBackground(new Color(120,130,255));
+		frame.add(p1);
+		
+		Start=new JButton("Start");
+		Start.setBounds(250,120,200,100);
+		Start.setFont(new Font("Arial",Font.BOLD,22));
+		Start.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent e) {
+				Start.setVisible(false);
+				Quit.setVisible(false);
+				p1.setVisible(true);
+				
+			}
+			
+		});
+		frame.add(Start);
+		
+		Quit=new JButton("Quit");
+		Quit.setBounds(20,300,80,50);
+		Quit.setFont(new Font("Arial",Font.BOLD,14));
+		Quit.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				System.exit(0);
+				
+			}			
+		});
+		frame.add(Quit);
+		
+		Quit2=new JButton("Quit");
+		Quit2.setBounds(20,300,80,50);
+		Quit2.setFont(new Font("Arial",Font.BOLD,14));
+		Quit2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				System.exit(0);
+				
+			}			
+		});
+		p1.add(Quit2);
+		
+		close=new JButton("Close");
+		close.setBounds(580,300,80,50);
+		close.setFont(new Font("Arial",Font.BOLD,14));
+		close.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				p1.setVisible(false);
+				Start.setVisible(true);
+				Quit.setVisible(true);
+			}
+		});
+		p1.add(close);
+		
+		
+		frame.setBounds(400,300,700,400);
+		frame.getContentPane().setBackground(new Color(120,130,255));
+		frame.setVisible(true);
+	}
+
+}
