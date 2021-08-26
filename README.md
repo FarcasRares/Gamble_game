@@ -1,3 +1,3 @@
 # Gamble Game
-Do you fill lucky?
+<br>Do you fill lucky?</br>
 Test your Luck!
