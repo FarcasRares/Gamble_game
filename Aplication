@@ -2,13 +2,16 @@ package Gamble_Game;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.TextArea;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Random;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTextArea;
+
 
 public class Aplication extends JFrame {
 	JFrame frame;
@@ -18,7 +21,14 @@ public class Aplication extends JFrame {
 	JButton Quit;
 	JButton Quit2;
 	JButton close;
-	JTextArea chat;
+	TextArea chat;
+	Random rand=new Random();
+	JLabel Score;
+	JLabel You;
+	JLabel Opponent;
+	int yo,op;
+	JLabel YouCount;
+	JLabel OpponentCount;
 	Aplication(String text)
 	{
 		frame=new JFrame (text);
@@ -40,7 +50,8 @@ public class Aplication extends JFrame {
 				Start.setVisible(false);
 				Quit.setVisible(false);
 				p1.setVisible(true);
-				
+				yo=0;
+				op=0;
 			}
 			
 		});
@@ -79,6 +90,69 @@ public class Aplication extends JFrame {
 			}
 		});
 		p1.add(close);
+		
+		chat=new TextArea();
+		chat.setBounds(20,30,300,200);
+		chat.setFont(new Font("Arial",Font.PLAIN,18));
+		p1.add(chat);
+		
+		Dice=new JButton("DICE");
+		Dice.setBounds(400,30,100,60);
+		Dice.setFont(new Font("Arial",Font.BOLD,22));
+		Dice.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int x;
+				chat.setForeground(new Color(0,0,0));
+				x=rand.nextInt(100-0)+0;
+				chat.append("You dice "+x+" ! "+"\n");
+				int y;
+				y=rand.nextInt(100-0)+0;
+				chat.append("Opponent dice "+y+" ! "+ "\n");
+				if (x > y) {yo++;YouCount.setText(""+yo);OpponentCount.setText(""+op);}
+				else {op++;OpponentCount.setText(""+op);YouCount.setText(""+yo);}
+				if (yo==5) {
+					    chat.setForeground(new Color(0,255,0));
+						chat.append("Congratulation you win!"+"\n");
+						op=0;
+						yo=0;
+				}
+				else if (op==5) {
+					chat.setForeground(new Color(255,0,0));
+					chat.append("You lost ! :("+"\n");
+					op=0;
+					yo=0;
+				}
+				}
+			
+		});
+		p1.add(Dice);
+		
+	
+		
+		Score=new JLabel("Score");
+		Score.setBounds(420,100,100,60);
+		Score.setFont(new Font("Arial",Font.BOLD,22));
+		p1.add(Score);
+		
+		You=new JLabel("You : ");
+		You.setBounds(400,130,100,60);
+		You.setFont(new Font("Arial",Font.BOLD,22));
+		p1.add(You);
+		
+		YouCount=new JLabel(" ");
+		YouCount.setBounds(500,130,100,60);
+		YouCount.setFont(new Font("Arial",Font.BOLD,22));
+		p1.add(YouCount);
+		
+		Opponent=new JLabel("Opponent : ");
+		Opponent.setBounds(340,160,200,60);
+		Opponent.setFont(new Font("Arial",Font.BOLD,22));
+		p1.add(Opponent);
+		
+		OpponentCount=new JLabel(" ");
+		OpponentCount.setBounds(500,160,200,60);
+		OpponentCount.setFont(new Font("Arial",Font.BOLD,22));
+		p1.add(OpponentCount);
 		
 		
 		frame.setBounds(400,300,700,400);
