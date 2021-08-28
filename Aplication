@@ -11,7 +11,6 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-
 public class Aplication extends JFrame {
 	JFrame frame;
 	JPanel p1;
