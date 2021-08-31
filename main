@@ -7,5 +7,4 @@ public class main {
 		Aplication app=new Aplication("Gamble game");
 
 	}
-
 }
