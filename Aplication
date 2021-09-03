@@ -6,10 +6,12 @@ import java.awt.TextArea;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Random;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+
 
 public class Aplication extends JFrame {
 	JFrame frame;
@@ -27,6 +29,7 @@ public class Aplication extends JFrame {
 	int yo,op;
 	JLabel YouCount;
 	JLabel OpponentCount;
+	JButton Restart;
 	Aplication(String text)
 	{
 		frame=new JFrame (text);
@@ -151,6 +154,21 @@ public class Aplication extends JFrame {
 		OpponentCount.setBounds(500,160,200,60);
 		OpponentCount.setFont(new Font("Arial",Font.BOLD,22));
 		p1.add(OpponentCount);
+		
+		Restart=new JButton("Restart");
+		Restart.setBounds(450,300,100,50);
+		Restart.setFont(new Font("Arial",Font.BOLD,14));
+		Restart.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+		  yo=0;
+		  op=0;
+		  chat.setText(" ");
+		  OpponentCount.setText("0");
+		  YouCount.setText("0");
+			}
+			
+		});
+		p1.add(Restart);
 		
 		
 		frame.setBounds(400,300,700,400);
